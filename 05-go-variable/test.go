@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	byte_rune "go-test/05-go-variable/byte-rune"
 	const_iota "go-test/05-go-variable/const-iota"
 )
 
@@ -15,5 +16,8 @@ func main() {
 
 	fmt.Println("03 |--------------- IOTA测试代码读取为：")
 	fmt.Println(const_iota.I1, const_iota.I2, const_iota.I3, const_iota.I4, const_iota.I5, const_iota.I6)
+
+	fmt.Println(" |--------------- 分割线 ---------------|")
+	byte_rune.Test()
 
 }

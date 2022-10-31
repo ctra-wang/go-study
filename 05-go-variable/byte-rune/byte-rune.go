@@ -18,6 +18,7 @@ func Test() {
 	length := GetStringSize(str)
 	fmt.Println(length)
 
+	// 由于字符串会转成ASCII 码，则用for循环会打印出乱码
 	for i := 0; i < len(str); i++ {
 		fmt.Printf("%c ", str[i])
 	}

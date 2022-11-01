@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	go_array "go-test/05-go-variable/array-slice"
 	byte_rune "go-test/05-go-variable/byte-rune"
 	const_iota "go-test/05-go-variable/const-iota"
 )
@@ -20,4 +21,10 @@ func main() {
 	fmt.Println(" |--------------- 分割线 ---------------|")
 	byte_rune.Test()
 
+	fmt.Println(" |--------------- 分割线 ---------------|")
+	go_array.Test02()
+	go_array.Test03()
+	go_array.Test04()
+	go_array.Test05()
+	go_array.Test06()
 }

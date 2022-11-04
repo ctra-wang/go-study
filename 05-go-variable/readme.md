@@ -22,3 +22,6 @@ iota记住下面2点
 - 4、切片的底层是数组。
 
 ![img.png](file/img.png)
+
+> 对切片的截取图解：
+(https://blog.csdn.net/weixin_44495599/article/details/121023635)[https://blog.csdn.net/weixin_44495599/article/details/121023635]

@@ -1,6 +1,17 @@
 package array_slice
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
+
+func init() {
+
+}
+
+func init() {
+	fmt.Println("|-------------- ini2--------------------")
+}
 
 func change(arr [3]int) {
 	arr[0] = 998
@@ -72,4 +83,98 @@ func Test06() {
 	slice2[0] = 100
 	fmt.Println(slice1)
 	fmt.Println(slice2)
+}
+
+// Test07 判断slice 动态扩容,每次增长容量为2
+func Test07() {
+	fmt.Println("|-------------- Test07 使用数组创建 slice")
+	var slice1 []int
+	for i := 0; i < 10; i++ {
+		slice1 = append(slice1, i)
+		fmt.Printf("%v,%p cap:%d len:%d \n", slice1, slice1, cap(slice1), len(slice1))
+	}
+}
+
+// Test08 判断slice 动态扩容,每次增长容量为2
+func Test08() {
+	fmt.Println("|-------------- Test08 使用数组创建 slice")
+	var slice1 []int
+	for i := 0; i < 10; i++ {
+		slice1 = append(slice1, i)
+		fmt.Printf("%v,%p cap:%d len:%d \n", slice1, slice1, cap(slice1), len(slice1))
+	}
+}
+
+// Test09 判断slice 动态扩容,每次增长容量为2
+func Test09() {
+	fmt.Println("|-------------- Test09 使用数组创建 slice")
+	var slice1 []int
+	var slice2 = []int{1, 2, 3, 4, 5}
+	// 一次添加多个元素语法糖
+	slice1 = append(slice1, slice2...)
+
+}
+
+func Test10() {
+	str := "2020-05-1619:20:34|user.login|name=Charles&location=Beijing&device=iPhone"
+	arr := strings.Split(str, "|")
+
+	res := map[string]string{}
+	if len(arr) > 0 {
+		data := strings.Split(arr[len(arr)-1], "&")
+		if len(data) > 0 {
+			for _, temp := range data {
+				data1 := strings.Split(temp, "=")
+				if len(data1) == 2 {
+					res[data1[0]] = data1[1]
+				}
+			}
+		}
+	}
+	fmt.Println(res)
+}
+
+func Test11(arr []int) int {
+	length := len(arr)
+	if length <= 0 {
+		return 0
+	}
+	start := 0
+
+	// 首位大于0
+	if arr[0] > 0 {
+		return arr[0]
+	}
+	// 末位大于0
+	if arr[length-1] < 0 {
+		return arr[length-1]
+	}
+
+	for {
+		mid := (start + length) / 2
+		fmt.Printf("mid:%v \n", mid)
+		if arr[mid] > 0 {
+			if arr[mid-1] > 0 {
+				length = mid - 1
+			} else {
+				if arr[mid] > -arr[mid-1] {
+					return arr[mid-1]
+				} else {
+					return arr[mid]
+				}
+			}
+		} else if arr[mid] < 0 {
+			if arr[mid-1] < 0 {
+				length = mid + 1
+			} else {
+				if -arr[mid] > arr[mid+1] {
+					return arr[mid+1]
+				} else {
+					return arr[mid]
+				}
+			}
+		} else {
+			return arr[mid]
+		}
+	}
 }

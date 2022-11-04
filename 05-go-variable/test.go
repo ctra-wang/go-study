@@ -7,6 +7,11 @@ import (
 	const_iota "go-test/05-go-variable/const-iota"
 )
 
+func init() {
+	fmt.Println("|-------------- hhhhhhhhhhhhhhhhhhhh-----------------")
+
+}
+
 func main() {
 
 	fmt.Println("01 |--------------- IOTA测试代码读取为：")
@@ -27,4 +32,8 @@ func main() {
 	go_array.Test04()
 	go_array.Test05()
 	go_array.Test06()
+	go_array.Test10()
+	arr := []int{-3, -2, -1, 0, 1, 2, 7, 9, 11}
+	res := go_array.Test11(arr)
+	fmt.Println(res)
 }

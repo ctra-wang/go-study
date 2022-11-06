@@ -33,7 +33,13 @@ func main() {
 	go_array.Test05()
 	go_array.Test06()
 	go_array.Test10()
+
 	arr := []int{-3, -2, -1, 0, 1, 2, 7, 9, 11}
 	res := go_array.Test11(arr)
 	fmt.Println(res)
+
+	go_array.Test01()
+	go_array.Test12()
+	go_array.Test13()
+	go_array.Test14()
 }

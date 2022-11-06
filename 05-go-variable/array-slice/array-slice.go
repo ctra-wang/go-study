@@ -17,6 +17,13 @@ func change(arr [3]int) {
 	arr[0] = 998
 }
 
+/*
+	切片是引用类型，定义一个切片必须初始化
+	1、直接定义 []int{}
+	2、从数组中定义 arr[1:n]
+	3、定义并且初始化 []int{1,3,5}
+*/
+
 // Test02 判断 array数组 为值类型
 func Test02() {
 	fmt.Println("|-------------- Test02 使用数组创建 slice")

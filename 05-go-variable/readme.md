@@ -25,3 +25,11 @@ iota记住下面2点
 
 > 对切片的截取图解：
 (https://blog.csdn.net/weixin_44495599/article/details/121023635)[https://blog.csdn.net/weixin_44495599/article/details/121023635]
+
+
+
+
+## 3、map 
+> 特点：\
+> 1、map 是无序的  \
+> 2、map 不初始化无法赋值

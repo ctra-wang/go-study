@@ -17,6 +17,7 @@ func NewPerson(age int8, name, address string) *Person {
 }
 
 // ----------------- 方法 -----------------
+// 1、尽量使用指针作为方法的接受者 即：func (p *Person) xxx
 func (p *Person) setName(name string) {
 	p.name = name
 }

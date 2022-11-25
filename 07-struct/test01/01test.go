@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type student struct {
 	name string
@@ -8,6 +10,17 @@ type student struct {
 }
 
 func main() {
+
+	p1 := &student{
+		name: "123",
+		age:  123,
+	}
+
+	fmt.Printf("%p \n", p1)
+	fmt.Printf("%p \n", &p1.name)
+	fmt.Printf("%p \n", &p1.age)
+
+	fmt.Println("===========================")
 	m := make(map[string]*student)
 	stus := []student{
 		{name: "小王子", age: 18},

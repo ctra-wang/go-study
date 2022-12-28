@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"sync"
 )
 
@@ -19,7 +20,7 @@ func main() {
 		defer wg.Done()
 
 		//time.Sleep(time.Second * 1)
-		println(`Message: ` + <-c)
+		fmt.Println(`Message: ` + <-c)
 	}()
 
 	wg.Wait()

@@ -13,5 +13,6 @@ func main1() {
 	for i := 0; i < 100; i++ {
 		go goFunc(i)
 	}
+
 	time.Sleep(time.Second)
 }

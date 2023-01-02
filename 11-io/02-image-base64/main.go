@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/base64"
 	"fmt"
 	"github.com/fogleman/gg"
@@ -14,11 +15,11 @@ import (
 
 func main() {
 
-	// dc4a2950158e481e912e76d400ac633b.jpg
-	img := imgbase64.FromRemote("https://ctra-1304125885.cos.ap-beijing.myqcloud.com/ctra/20221226/")
+	//
+	img := imgbase64.FromRemote("www.baidu.com")
 	//fmt.Println(img)
 
-	//imgUrl := "https://ctra-1304125885.cos.ap-beijing.myqcloud.com/ctra/20221226/"
+	//imgUrl := ""
 	//
 	//h := md5.New()
 	//h.Write([]byte(imgUrl))
@@ -44,20 +45,23 @@ func main() {
 	dec := base64.NewDecoder(base64.StdEncoding, strings.NewReader(img[i+1:]))
 	//fmt.Println(dec)
 
-	waterImage, err := gg.LoadImage("ddd.png")
+	fmt.Println("-------===========")
+	f, err := os.Create("ddd.jpg")
+	if err != nil {
+		log.Println(err)
+	}
+	defer os.RemoveAll(f.Name())
+	_, err = io.Copy(f, dec)
+	if err != nil {
+		log.Println(err)
+	}
+	log.Println("---图片接收完成------名称是", "ddd.jpg")
+
+	//var waterImage image.Image
+	waterImage, err := gg.LoadImage("ddd.jpg")
 	// 如果没有加载到图片，则创建图片
 	if err != nil {
-		fmt.Println("-------===========")
-		f, err := os.Create("ddd.jpg")
-		if err != nil {
-			log.Println(err)
-		}
-		//defer f.Close()
-		_, err = io.Copy(f, dec)
-		if err != nil {
-			log.Println(err)
-		}
-		log.Println("---图片接收完成------名称是", "ddd.jpg")
+		fmt.Println("-------")
 	}
 
 	// 通过图片实例化gg
@@ -76,21 +80,31 @@ func main() {
 
 	s1 := "1200fenmi"
 	dc.DrawStringWrapped(s1, 220, 460, 0, 0, 140, 1, gg.AlignCenter)
-	name := "/Users/ctra_wl/Desktop/go-test/test_pic_1.png"
 
-	newfile, err := os.Create(name)
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-	//defer newfile.Close()
-	// 将文件保存输出，并设置压缩比
-	err = jpeg.Encode(newfile, dc.Image(), &jpeg.Options{Quality: 60})
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-	return
+	buffer := bytes.NewBuffer(nil)
+	//dc.EncodePNG(buffer)
+	//b := buffer.Bytes()
+	//
+	//str := base64.StdEncoding.EncodeToString(b)
+	//fmt.Println(str)
+	//name := "/Users/ctra_wl/Desktop/go-test/test_pic_1.png"
+	//
+	//newfile, err := os.Create(name)
+	//if err != nil {
+	//	fmt.Println(err.Error())
+	//	return
+	//}
+	////defer newfile.Close()
+	//// 将文件保存输出，并设置压缩比
+	err = jpeg.Encode(buffer, dc.Image(), &jpeg.Options{Quality: 60})
+	b := buffer.Bytes()
+	str := base64.StdEncoding.EncodeToString(b)
+	fmt.Println(str)
+	//if err != nil {
+	//	fmt.Println(err.Error())
+	//	return
+	//}
+	//return
 
 	//f, err := os.Create("/imgs/ddd.png")
 	//if err != nil {
